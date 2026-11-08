@@ -1,0 +1,104 @@
+{
+ "baseline_activations": 368,
+ "added_activations": 406,
+ "new_activations": 774,
+ "baseline_rate": 0.0736,
+ "new_rate": 0.1549,
+ "uplift_pct": 110,
+ "stage_conversion": [
+  0.681,
+  0.58,
+  0.436,
+  0.683,
+  0.626
+ ],
+ "median_install_days_by_segment": {
+  "Micro retail & services": 5.0,
+  "Professional offices": 5.0,
+  "Small manufacturers": 21.0,
+  "Small multi-site businesses": 5.0
+ },
+ "median_install_days_all": 5.0,
+ "mean_stage_gaps_days": {
+  "created_date": NaN,
+  "contacted_date": 2.0,
+  "needs_assessed_date": 3.0,
+  "quote_accepted_date": 4.1,
+  "kyc_complete_date": 3.8,
+  "activated_date": 4.8
+ },
+ "by_source": [
+  {
+   "lead_source": "Channel partner",
+   "leads": 1010,
+   "cost": 1688930,
+   "act": 81,
+   "cost_per_lead": 1672.0,
+   "cac": 20851.0,
+   "act_rate": 0.08
+  },
+  {
+   "lead_source": "Field sales",
+   "leads": 1720,
+   "cost": 3041870,
+   "act": 125,
+   "cost_per_lead": 1769.0,
+   "cac": 24335.0,
+   "act_rate": 0.073
+  },
+  {
+   "lead_source": "Inbound call",
+   "leads": 504,
+   "cost": 245440,
+   "act": 48,
+   "cost_per_lead": 487.0,
+   "cac": 5113.0,
+   "act_rate": 0.095
+  },
+  {
+   "lead_source": "Referral",
+   "leads": 413,
+   "cost": 250020,
+   "act": 61,
+   "cost_per_lead": 605.0,
+   "cac": 4099.0,
+   "act_rate": 0.148
+  },
+  {
+   "lead_source": "Website form",
+   "leads": 995,
+   "cost": 273120,
+   "act": 43,
+   "cost_per_lead": 274.0,
+   "cac": 6352.0,
+   "act_rate": 0.043
+  },
+  {
+   "lead_source": "WhatsApp campaign",
+   "leads": 358,
+   "cost": 40260,
+   "act": 10,
+   "cost_per_lead": 112.0,
+   "cac": 4026.0,
+   "act_rate": 0.028
+  }
+ ],
+ "levers": {
+  "Advisor on phone, 24x7 - no visit needed": 82.6,
+  "Instant quote": 53.6,
+  "One plain-language monthly price": 44.0,
+  "Slot booking + 5G AirFiber bridge": 39.2,
+  "Smart KYC in ~5 minutes": 29.7,
+  "Right-sized bundles, affordability cap": 26.5,
+  "5G AirFiber fallback": 24.6,
+  "Remote Aadhaar e-sign by signatory": 19.9,
+  "DigiLocker / registry fetch, GST-free bundle": 17.6,
+  "UPI Autopay with retry": 16.8,
+  "Mismatch flagged at upload, fix on the spot": 14.7,
+  "WhatsApp-first async follow-up": 13.0,
+  "Live tracker, no status chasing": 10.6,
+  "Transparent bundle savings": 8.8,
+  "Saved quote + reminder": 4.6,
+  "Not addressed": 0.0
+ }
+}

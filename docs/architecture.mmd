@@ -1,0 +1,36 @@
+flowchart LR
+  subgraph Owner["Owner's phone"]
+    W[Web app EN/HI<br/>voice input]:::c
+    WA[WhatsApp bot<br/>same advisor]:::c
+  end
+  subgraph API["Udyam Digital API (FastAPI)"]
+    ADV[Conversational Advisor<br/>Intent & slot engine<br/>EN/HI + Voice]:::k
+    BUN[Bundle engine<br/>eligibility, deps,<br/>price rules]:::k
+    KYC[Smart KYC<br/>OCR, deskew,<br/>cross-checks]:::k
+    CON[Consent manager<br/>DPDP purposes,<br/>withdraw/erase]:::p
+    ORD[Order & tracker<br/>stages, ETA,<br/>notifications]:::k
+    PROP[Propensity model<br/>lead score + reasons]:::k
+  end
+  subgraph Ext["External / mocked"]
+    GST[(GSTIN registry)]
+    UDY[(Udyam registry)]
+    DL[DigiLocker / e-sign]
+    UPI[UPI Autopay]
+    FS[Field force & partners<br/>install + assisted sales]
+  end
+  CAT[(Product catalogue)]
+  W --> ADV --> BUN --> CAT
+  WA --> ADV
+  ADV -. GSTIN prefill .-> GST
+  W --> CON --> KYC
+  KYC --> GST & UDY
+  KYC -.-> DL
+  W --> ORD --> UPI
+  ORD --> FS
+  ADV -- hand-off --> PROP --> FS
+  classDef c fill:#FFF1F1,stroke:#E40000,color:#1B1F24
+  classDef k fill:#FFFFFF,stroke:#1B1F24,color:#1B1F24
+  classDef p fill:#E7F6EE,stroke:#0F8A4B,color:#1B1F24
+  style Owner fill:#F7F8FA,stroke:#D0D5DB
+  style API fill:#F7F8FA,stroke:#D0D5DB
+  style Ext fill:#F7F8FA,stroke:#D0D5DB

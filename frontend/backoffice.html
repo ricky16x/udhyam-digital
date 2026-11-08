@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Udyam Digital · Sales & Partner Executive Desk</title>
+<style>
+:root{--red:#E40000;--red-dark:#B80000;--green:#0F8A4B;--ink:#1B1F24;--mut:#5F6B76;--line:#E6E9ED;--bg:#F5F6F8;font-family:"Segoe UI",Roboto,Arial,sans-serif}
+body{margin:0;background:var(--bg);color:var(--ink)}header{background:#fff;border-bottom:1px solid var(--line);padding:14px 24px;display:flex;justify-content:space-between;align-items:center}
+.brand{display:flex;gap:12px;align-items:center}
+.logo{width:32px;height:32px;border-radius:9px;background:var(--red);color:#fff;display:grid;place-items:center;font-weight:800}
+main{padding:20px 24px;max-width:1320px;margin:0 auto}
+.banner{background:linear-gradient(135deg, #1B1F24 0%, #2D3748 100%);color:#fff;border-radius:14px;padding:16px 20px;margin-bottom:20px;display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.banner .metric b{font-size:24px;display:block;color:#4ADE80}
+.banner .metric span{font-size:12px;opacity:0.85}
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:16px}
+.card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px}.card b{font-size:26px;display:block}.mut{color:var(--mut);font-size:13px}
+table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;font-size:13px}
+th,td{padding:10px 12px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}th{background:#FAFBFC;color:var(--mut);font-weight:600}
+.bar{height:8px;background:#EEF0F3;border-radius:6px;width:80px;margin-top:4px}.bar i{display:block;height:8px;border-radius:6px;background:var(--red)}
+.tag{display:inline-block;padding:2px 8px;border-radius:10px;background:#EEF0F3;font-size:11px;font-weight:600}
+.f{display:flex;gap:10px;margin:12px 0}
+select{padding:8px 12px;border:1px solid var(--line);border-radius:8px;font-size:13px}h2{font-size:17px;margin:22px 0 8px}
+.btn-act{background:#fff;border:1px solid var(--line);border-radius:6px;padding:4px 8px;font-size:11px;font-weight:600;cursor:pointer;transition:all .15s}
+.btn-act:hover{background:#F0F4F8;border-color:#CBD5E1}
+.btn-act.wa{color:#059669;border-color:#A7F3D0;background:#ECFDF5}
+.btn-act.wa:hover{background:#D1FAE5}
+.btn-claim{background:var(--red);color:#fff;border:none;border-radius:6px;padding:4px 10px;font-size:11px;font-weight:600;cursor:pointer}
+.btn-claim.done{background:#0F8A4B}
+@media(max-width:800px){.banner,.cards{grid-template-columns:1fr 1fr}main{padding:12px}}
+</style></head>
+<body>
+<header>
+  <div class="brand"><span class="logo">A</span><div><b>Udyam Digital – Sales & Partner Desk</b><div class="mut">Assisted sales routing, propensity scoring & drop-off recovery</div></div></div>
+  <div><a href="/" target="_blank" style="text-decoration:none;font-size:13px;font-weight:600;color:var(--red);background:#FFF1F1;padding:6px 12px;border-radius:8px">Open Customer Journey →</a></div>
+</header>
+<main>
+  <!-- Executive Business Impact Summary -->
+  <div class="banner">
+    <div class="metric"><span>Conversion (Lead → Active)</span><b>7.4% → 15.5%</b><span>+110% uplift (Impact Model)</span></div>
+    <div class="metric"><span>Median Activation Time</span><b>17.6d → 5.0d</b><span>72% faster onboarding</span></div>
+    <div class="metric"><span>Blended Acquisition Cost</span><b>₹15k → ₹5.2k</b><span>65% CAC reduction</span></div>
+    <div class="metric"><span>Customer Status Chases</span><b>3.0× → 0.2×</b><span>93% drop in support calls</span></div>
+  </div>
+
+  <div class="cards" id="cards"></div>
+  <div class="f">
+    <select id="seg"><option value="">All segments</option><option>Micro retail & services</option><option>Professional offices</option><option>Small multi-site businesses</option><option>Small manufacturers</option></select>
+    <select id="src"><option value="">All sources</option><option>Field sales</option><option>Channel partner</option><option>Website form</option><option>Inbound call</option><option>Referral</option><option>WhatsApp campaign</option></select>
+  </div>
+
+  <h2>Active Live Advisor Hand-offs (Requires Follow-up)</h2>
+  <div id="ho" class="mut">None yet – they appear dynamically when an owner taps "Talk to an expert" or KYC requires assistance.</div>
+
+  <h2>Propensity-Ranked SMB Leads (Prioritised Recovery)</h2>
+  <table>
+    <thead><tr><th>Lead</th><th>Business</th><th>Segment · City · Language</th><th>Dropped At</th><th>Score</th><th>Why</th><th>Route To</th><th>Actions</th></tr></thead>
+    <tbody id="rows"></tbody>
+  </table>
+</main>
+<script>
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+async function load() {
+  const q = new URLSearchParams({segment: seg.value, source: src.value, limit: 40});
+  [...q.keys()].forEach(k => !q.get(k) && q.delete(k));
+  const d = await (await fetch('/api/backoffice/leads?' + q)).json(), s = d.stats;
+  cards.innerHTML = `
+    <div class="card"><span class="mut">ML Model AUC (5-fold CV)</span><b>${s.cv_auc}</b><span class="mut">Logistic Regression (interpretable)</span></div>
+    <div class="card"><span class="mut">Top-Decile Activation Rate</span><b>${(s.top_decile_rate*100).toFixed(1)}%</b><span class="mut">vs ${(s.base_rate*100).toFixed(1)}% baseline</span></div>
+    <div class="card"><span class="mut">Top 30% Leads Capture</span><b>${Math.round(s.top30_share_of_activations*100)}%</b><span class="mut">of all potential activations</span></div>
+    <div class="card"><span class="mut">Bottom-Decile Conversion</span><b>${(s.bottom_decile_rate*100).toFixed(1)}%</b><span class="mut">→ Low CAC WhatsApp nudge</span></div>`;
+
+  rows.innerHTML = d.leads.map(r => `
+    <tr id="row_${r.lead_id}">
+      <td><b>${r.lead_id}</b></td>
+      <td><b>${esc(r.business)}</b><div class="mut">${esc(r.type)} · GSTIN ${esc(r.gstin)}</div></td>
+      <td>${esc(r.segment)}<div class="mut">${esc(r.city)} · ${esc(r.language)} · ${esc(r.source)}</div></td>
+      <td>${esc(r.stage)}<div class="mut" style="color:var(--red)">${esc(r.drop_reason)}</div></td>
+      <td><b>${(r.propensity*100).toFixed(0)}</b><div class="bar"><i style="width:${Math.min(100,r.propensity*100)}%"></i></div></td>
+      <td class="mut">${r.why.map(esc).join('<br>')}</td>
+      <td><span class="tag">${esc(r.route)}</span></td>
+      <td>
+        <button class="btn-act wa" onclick="triggerNudge('${r.lead_id}', '${esc(r.business)}')">💬 Nudge</button>
+        <button class="btn-act" onclick="assignRoute('${r.lead_id}', '${esc(r.route)}')">👤 Assign</button>
+      </td>
+    </tr>`).join('');
+
+  ho.innerHTML = d.handoffs.length ? `<table>
+    <tr><th>Session</th><th>Business</th><th>Step</th><th>Recent Events</th><th>GSTIN</th><th>Action</th></tr>
+    ${d.handoffs.map((h, i) => `<tr>
+      <td><b>${h.session}</b></td>
+      <td>${esc(h.business || 'Business')} (${h.segment})</td>
+      <td><span class="tag">${h.step}</span></td>
+      <td class="mut">${h.events.map(esc).join(' → ')}</td>
+      <td>${esc(h.gstin || '—')}</td>
+      <td><button class="btn-claim" id="claim_${i}" onclick="claimHandoff('${i}')">Claim & Call</button></td>
+    </tr>`).join('')}</table>` : '<div class="mut" style="padding:10px 0">No active hand-offs right now. Start an advisor session and tap "Talk to an expert" to see live handoffs.</div>';
+}
+
+function triggerNudge(leadId, business) {
+  alert(`WhatsApp Nudge sent to ${business} (${leadId}): "Namaste! Your saved Accel Business bundle is waiting with 1-click activation."`);
+}
+
+function assignRoute(leadId, route) {
+  alert(`Lead ${leadId} assigned to ${route}. Notification dispatched to partner dashboard.`);
+}
+
+function claimHandoff(idx) {
+  const btn = document.getElementById(`claim_${idx}`);
+  btn.textContent = "✓ Claimed";
+  btn.classList.add("done");
+  alert("Lead claimed by you. Customer contact details unmasked for direct call.");
+}
+
+seg.onchange = src.onchange = load;
+load();
+setInterval(load, 15000);
+</script>
+</body>
+</html>

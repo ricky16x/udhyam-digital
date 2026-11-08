@@ -1,0 +1,572 @@
+{
+ "K01": {
+  "status": "rejected_fixable",
+  "checks": [
+   {
+    "level": "pass",
+    "code": "GSTIN_FORMAT",
+    "message": "GSTIN 37**********1ZS format and checksum valid",
+    "doc": "gst_certificate"
+   },
+   {
+    "level": "fail",
+    "code": "GSTIN_CANCELLED",
+    "message": "GSTIN is Cancelled in the GST registry - products that need GST cannot be activated",
+    "doc": "gst_certificate"
+   },
+   {
+    "level": "pass",
+    "code": "GST_NAME_MATCH",
+    "message": "Business name matches the GST registry",
+    "doc": "gst_certificate"
+   },
+   {
+    "level": "warn",
+    "code": "UDYAM_NUMBER_MISSING",
+    "message": "Udyam registration number is missing or unreadable on the certificate",
+    "doc": "udyam_certificate"
+   },
+   {
+    "level": "pass",
+    "code": "ID_VALID",
+    "message": "Signatory ID valid till 2028-03-26",
+    "doc": "signatory_id"
+   },
+   {
+    "level": "pass",
+    "code": "ADDRESS_PROOF_RECENT",
+    "message": "Address proof dated 2026-06-26 (19 days old)",
+    "doc": "address_proof"
+   },
+   {
+    "level": "pass",
+    "code": "ADDRESS_MATCH",
+    "message": "Installation address matches the GST registered address",
+    "doc": "address_proof"
+   }
+  ],
+  "fail_count": 1,
+  "warn_count": 1
+ },
+ "K02": {
+  "status": "verified",
+  "checks": [
+   {
+    "level": "pass",
+    "code": "GSTIN_FORMAT",
+    "message": "GSTIN 19**********1ZL format and checksum valid",
+    "doc": "gst_certificate"
+   },
+   {
+    "level": "pass",
+    "code": "GSTIN_ACTIVE",
+    "message": "GSTIN is Active in the GST registry",
+    "doc": "gst_certificate"
+   },
+   {
+    "level": "pass",
+    "code": "GST_NAME_MATCH",
+    "message": "Business name matches the GST registry",
+    "doc": "gst_certificate"
+   },
+   {
+    "level": "pass",
+    "code": "UDYAM_FOUND",
+    "message": "Udyam registration found (Small, Services)",
+    "doc": "udyam_certificate"
+   },
+   {
+    "level": "pass",
+    "code": "ID_VALID",
+    "message": "Signatory ID valid till 2028-09-10",
+    "doc": "signatory_id"
+   },
+   {
+    "level": "pass",
+    "code": "ADDRESS_PROOF_RECENT",
+    "message": "Address proof dated 2026-05-22 (54 days old)",
+    "doc": "address_proof"
+   },
+   {
+    "level": "pass",
+    "code": "ADDRESS_MATCH",
+    "message": "Installation address matches the GST registered address",
+    "doc": "address_proof"
+   }
+  ],
+  "fail_count": 0,
+  "warn_count": 0
+ },
+ "K03": {
+  "status": "verified",
+  "checks": [
+   {
+    "level": "pass",
+    "code": "GSTIN_FORMAT",
+    "message": "GSTIN 27**********1ZP format and checksum valid",
+    "doc": "gst_certificate"
+   },
+   {
+    "level": "pass",
+    "code": "GSTIN_ACTIVE",
+    "message": "GSTIN is Active in the GST registry",
+    "doc": "gst_certificate"
+   },
+   {
+    "level": "pass",
+    "code": "GST_NAME_MATCH",
+    "message": "Business name matches the GST registry",
+    "doc": "gst_certificate"
+   },
+   {
+    "level": "pass",
+    "code": "UDYAM_FOUND",
+    "message": "Udyam registration found (Micro, Manufacturing)",
+    "doc": "udyam_certificate"
+   },
+   {
+    "level": "pass",
+    "code": "ID_VALID",
+    "message": "Signatory ID valid till 2028-07-04",
+    "doc": "signatory_id"
+   },
+   {
+    "level": "pass",
+    "code": "ADDRESS_PROOF_RECENT",
+    "message": "Address proof dated 2026-05-30 (46 days old)",
+    "doc": "address_proof"
+   },
+   {
+    "level": "pass",
+    "code": "ADDRESS_MATCH",
+    "message": "Installation address matches the GST registered address",
+    "doc": "address_proof"
+   }
+  ],
+  "fail_count": 0,
+  "warn_count": 0
+ },
+ "K04": {
+  "status": "rejected_fixable",
+  "checks": [
+   {
+    "level": "warn",
+    "code": "BLURRY_IMAGE",
+    "message": "Gst certificate photo is blurry - please retake for faster approval",
+    "doc": "gst_certificate"
+   },
+   {
+    "level": "fail",
+    "code": "GSTIN_UNREADABLE",
+    "message": "Could not read the GSTIN on the certificate - please retake the photo",
+    "doc": "gst_certificate"
+   },
+   {
+    "level": "pass",
+    "code": "UDYAM_FOUND",
+    "message": "Udyam registration found (Micro, Services)",
+    "doc": "udyam_certificate"
+   },
+   {
+    "level": "pass",
+    "code": "ID_VALID",
+    "message": "Signatory ID valid till 2028-08-03",
+    "doc": "signatory_id"
+   },
+   {
+    "level": "pass",
+    "code": "ADDRESS_PROOF_RECENT",
+    "message": "Address proof dated 2026-05-28 (48 days old)",
+    "doc": "address_proof"
+   }
+  ],
+  "fail_count": 1,
+  "warn_count": 1
+ },
+ "K05": {
+  "status": "review",
+  "checks": [
+   {
+    "level": "warn",
+    "code": "MISSING_UDYAM_CERTIFICATE",
+    "message": "Udyam Certificate not uploaded",
+    "doc": "udyam_certificate"
+   },
+   {
+    "level": "pass",
+    "code": "GSTIN_FORMAT",
+    "message": "GSTIN 32**********1Z1 format and checksum valid",
+    "doc": "gst_certificate"
+   },
+   {
+    "level": "pass",
+    "code": "GSTIN_ACTIVE",
+    "message": "GSTIN is Active in the GST registry",
+    "doc": "gst_certificate"
+   },
+   {
+    "level": "pass",
+    "code": "GST_NAME_MATCH",
+    "message": "Business name matches the GST registry",
+    "doc": "gst_certificate"
+   },
+   {
+    "level": "pass",
+    "code": "ID_VALID",
+    "message": "Signatory ID valid till 2029-09-11",
+    "doc": "signatory_id"
+   },
+   {
+    "level": "pass",
+    "code": "ADDRESS_PROOF_RECENT",
+    "message": "Address proof dated 2026-06-11 (34 days old)",
+    "doc": "address_proof"
+   },
+   {
+    "level": "pass",
+    "code": "ADDRESS_MATCH",
+    "message": "Installation address matches the GST registered address",
+    "doc": "address_proof"
+   }
+  ],
+  "fail_count": 0,
+  "warn_count": 1
+ },
+ "K06": {
+  "status": "rejected_fixable",
+  "checks": [
+   {
+    "level": "fail",
+    "code": "GSTIN_FORMAT",
+    "message": "GSTIN 08**********1Z0 fails the format check: Checksum digit does not match - likely a typo or a tampered number",
+    "doc": "gst_certificate"
+   },
+   {
+    "level": "warn",
+    "code": "GSTIN_NEAR_MATCH",
+    "message": "Registry has 08**********1ZO for this business - differs by 2 character(s); ask the owner to confirm",
+    "doc": "gst_certificate"
+   },
+   {
+    "level": "pass",
+    "code": "UDYAM_FOUND",
+    "message": "Udyam registration found (Micro, Trading)",
+    "doc": "udyam_certificate"
+   },
+   {
+    "level": "pass",
+    "code": "ID_VALID",
+    "message": "Signatory ID valid till 2028-09-15",
+    "doc": "signatory_id"
+   },
+   {
+    "level": "pass",
+    "code": "ADDRESS_PROOF_RECENT",
+    "message": "Address proof dated 2026-06-11 (34 days old)",
+    "doc": "address_proof"
+   },
+   {
+    "level": "pass",
+    "code": "ADDRESS_MATCH",
+    "message": "Installation address matches the GST registered address",
+    "doc": "address_proof"
+   }
+  ],
+  "fail_count": 1,
+  "warn_count": 1
+ },
+ "K07": {
+  "status": "rejected_fixable",
+  "checks": [
+   {
+    "level": "pass",
+    "code": "GSTIN_FORMAT",
+    "message": "GSTIN 07**********1ZT format and checksum valid",
+    "doc": "gst_certificate"
+   },
+   {
+    "level": "pass",
+    "code": "GSTIN_ACTIVE",
+    "message": "GSTIN is Active in the GST registry",
+    "doc": "gst_certificate"
+   },
+   {
+    "level": "fail",
+    "code": "GST_NAME_MISMATCH",
+    "message": "Legal name on certificate ('Neha Banerjee (Prop. Shri Physio Clinic)') differs from GST registry ('Neha Banerjee (Prop. Neelgiri Physio Clinic)') - possible altered document",
+    "doc": "gst_certificate"
+   },
+   {
+    "level": "pass",
+    "code": "UDYAM_FOUND",
+    "message": "Udyam registration found (Small, Services)",
+    "doc": "udyam_certificate"
+   },
+   {
+    "level": "pass",
+    "code": "ID_VALID",
+    "message": "Signatory ID valid till 2030-05-05",
+    "doc": "signatory_id"
+   },
+   {
+    "level": "pass",
+    "code": "ADDRESS_PROOF_RECENT",
+    "message": "Address proof dated 2026-07-05 (10 days old)",
+    "doc": "address_proof"
+   },
+   {
+    "level": "pass",
+    "code": "ADDRESS_MATCH",
+    "message": "Installation address matches the GST registered address",
+    "doc": "address_proof"
+   }
+  ],
+  "fail_count": 1,
+  "warn_count": 0
+ },
+ "K08": {
+  "status": "verified",
+  "checks": [
+   {
+    "level": "pass",
+    "code": "GSTIN_FORMAT",
+    "message": "GSTIN 24**********1Z3 format and checksum valid",
+    "doc": "gst_certificate"
+   },
+   {
+    "level": "pass",
+    "code": "GSTIN_ACTIVE",
+    "message": "GSTIN is Active in the GST registry",
+    "doc": "gst_certificate"
+   },
+   {
+    "level": "pass",
+    "code": "GST_NAME_MATCH",
+    "message": "Business name matches the GST registry",
+    "doc": "gst_certificate"
+   },
+   {
+    "level": "pass",
+    "code": "UDYAM_FOUND",
+    "message": "Udyam registration found (Micro, Trading)",
+    "doc": "udyam_certificate"
+   },
+   {
+    "level": "pass",
+    "code": "ID_VALID",
+    "message": "Signatory ID valid till 2027-09-18",
+    "doc": "signatory_id"
+   },
+   {
+    "level": "pass",
+    "code": "ADDRESS_PROOF_RECENT",
+    "message": "Address proof dated 2026-05-26 (50 days old)",
+    "doc": "address_proof"
+   },
+   {
+    "level": "pass",
+    "code": "ADDRESS_MATCH",
+    "message": "Installation address matches the GST registered address",
+    "doc": "address_proof"
+   }
+  ],
+  "fail_count": 0,
+  "warn_count": 0
+ },
+ "K09": {
+  "status": "verified",
+  "checks": [
+   {
+    "level": "pass",
+    "code": "GSTIN_FORMAT",
+    "message": "GSTIN 37**********1ZB format and checksum valid",
+    "doc": "gst_certificate"
+   },
+   {
+    "level": "pass",
+    "code": "GSTIN_ACTIVE",
+    "message": "GSTIN is Active in the GST registry",
+    "doc": "gst_certificate"
+   },
+   {
+    "level": "pass",
+    "code": "GST_NAME_MATCH",
+    "message": "Business name matches the GST registry",
+    "doc": "gst_certificate"
+   },
+   {
+    "level": "pass",
+    "code": "UDYAM_FOUND",
+    "message": "Udyam registration found (Small, Trading)",
+    "doc": "udyam_certificate"
+   },
+   {
+    "level": "pass",
+    "code": "ID_VALID",
+    "message": "Signatory ID valid till 2027-12-22",
+    "doc": "signatory_id"
+   },
+   {
+    "level": "pass",
+    "code": "ADDRESS_PROOF_RECENT",
+    "message": "Address proof dated 2026-07-10 (5 days old)",
+    "doc": "address_proof"
+   },
+   {
+    "level": "pass",
+    "code": "ADDRESS_MATCH",
+    "message": "Installation address matches the GST registered address",
+    "doc": "address_proof"
+   }
+  ],
+  "fail_count": 0,
+  "warn_count": 0
+ },
+ "K10": {
+  "status": "verified",
+  "checks": [
+   {
+    "level": "pass",
+    "code": "GSTIN_FORMAT",
+    "message": "GSTIN 27**********1ZL format and checksum valid",
+    "doc": "gst_certificate"
+   },
+   {
+    "level": "pass",
+    "code": "GSTIN_ACTIVE",
+    "message": "GSTIN is Active in the GST registry",
+    "doc": "gst_certificate"
+   },
+   {
+    "level": "pass",
+    "code": "GST_NAME_MATCH",
+    "message": "Business name matches the GST registry",
+    "doc": "gst_certificate"
+   },
+   {
+    "level": "pass",
+    "code": "UDYAM_FOUND",
+    "message": "Udyam registration found (Small, Trading)",
+    "doc": "udyam_certificate"
+   },
+   {
+    "level": "pass",
+    "code": "ID_VALID",
+    "message": "Signatory ID valid till 2029-06-01",
+    "doc": "signatory_id"
+   },
+   {
+    "level": "pass",
+    "code": "ADDRESS_PROOF_RECENT",
+    "message": "Address proof dated 2026-06-18 (27 days old)",
+    "doc": "address_proof"
+   },
+   {
+    "level": "pass",
+    "code": "ADDRESS_MATCH",
+    "message": "Installation address matches the GST registered address",
+    "doc": "address_proof"
+   }
+  ],
+  "fail_count": 0,
+  "warn_count": 0
+ },
+ "K11": {
+  "status": "rejected_fixable",
+  "checks": [
+   {
+    "level": "pass",
+    "code": "GSTIN_FORMAT",
+    "message": "GSTIN 03**********1ZZ format and checksum valid",
+    "doc": "gst_certificate"
+   },
+   {
+    "level": "pass",
+    "code": "GSTIN_ACTIVE",
+    "message": "GSTIN is Active in the GST registry",
+    "doc": "gst_certificate"
+   },
+   {
+    "level": "pass",
+    "code": "GST_NAME_MATCH",
+    "message": "Business name matches the GST registry",
+    "doc": "gst_certificate"
+   },
+   {
+    "level": "pass",
+    "code": "UDYAM_FOUND",
+    "message": "Udyam registration found (Micro, Trading)",
+    "doc": "udyam_certificate"
+   },
+   {
+    "level": "pass",
+    "code": "ID_VALID",
+    "message": "Signatory ID valid till 2028-12-23",
+    "doc": "signatory_id"
+   },
+   {
+    "level": "fail",
+    "code": "ADDRESS_PROOF_OLD",
+    "message": "Address proof is 257 days old (limit 90) - please upload a recent bill",
+    "doc": "address_proof"
+   },
+   {
+    "level": "pass",
+    "code": "ADDRESS_MATCH",
+    "message": "Installation address matches the GST registered address",
+    "doc": "address_proof"
+   }
+  ],
+  "fail_count": 1,
+  "warn_count": 0
+ },
+ "K12": {
+  "status": "verified",
+  "checks": [
+   {
+    "level": "pass",
+    "code": "GSTIN_FORMAT",
+    "message": "GSTIN 37**********1ZU format and checksum valid",
+    "doc": "gst_certificate"
+   },
+   {
+    "level": "pass",
+    "code": "GSTIN_ACTIVE",
+    "message": "GSTIN is Active in the GST registry",
+    "doc": "gst_certificate"
+   },
+   {
+    "level": "pass",
+    "code": "GST_NAME_MATCH",
+    "message": "Business name matches the GST registry",
+    "doc": "gst_certificate"
+   },
+   {
+    "level": "pass",
+    "code": "UDYAM_FOUND",
+    "message": "Udyam registration found (Micro, Trading)",
+    "doc": "udyam_certificate"
+   },
+   {
+    "level": "pass",
+    "code": "ID_VALID",
+    "message": "Signatory ID valid till 2029-03-03",
+    "doc": "signatory_id"
+   },
+   {
+    "level": "pass",
+    "code": "ADDRESS_PROOF_RECENT",
+    "message": "Address proof dated 2026-07-06 (9 days old)",
+    "doc": "address_proof"
+   },
+   {
+    "level": "pass",
+    "code": "ADDRESS_MATCH",
+    "message": "Installation address matches the GST registered address",
+    "doc": "address_proof"
+   }
+  ],
+  "fail_count": 0,
+  "warn_count": 0
+ }
+}

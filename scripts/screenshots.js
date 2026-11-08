@@ -1,0 +1,51 @@
+// Walk the customer journey and capture screens for the deck / README
+const { chromium } = require('playwright');
+const OUT = process.argv[2] || 'docs/screens';
+(async () => {
+  const b = await chromium.launch();
+  const ctx = await b.newContext({ viewport: { width: 390, height: 844 }, deviceScaleFactor: 2 });
+  const p = await ctx.newPage();
+  const shot = async (n, full) => { await p.waitForTimeout(400); await p.screenshot({ path: `${OUT}/${n}.png`, fullPage: !!full }); };
+  const chip = async (t) => { await p.locator('#chips .chip', { hasText: t }).first().click(); await p.waitForResponse(r => r.url().includes('/advisor/message')); await p.waitForTimeout(250); };
+  await p.goto('http://localhost:8000/'); await p.evaluate(() => localStorage.setItem('lang', 'hi')); await p.reload();
+  await shot('01_welcome');
+  await p.click('#startBtn'); await p.waitForSelector('#chips .chip');
+  await chip('किराना'); await chip('1-5');
+  await p.fill('#txt', 'Visakhapatnam'); await p.click('button.icon >> nth=1'); await p.waitForResponse(r => r.url().includes('/advisor/message')); await p.waitForTimeout(300);
+  await p.fill('#txt', '37NBLXS1145E1ZU'); await p.click('button.icon >> nth=1'); await p.waitForResponse(r => r.url().includes('/advisor/message')); await p.waitForTimeout(300);
+  await p.locator('#chips .chip', { hasText: 'WhatsApp' }).click(); await p.locator('#chips .chip', { hasText: 'CCTV' }).click();
+  await shot('02_advisor_needs');
+  await chip('हो गया'); await chip('₹1,000–3,000');
+  await shot('03_advisor_reco');
+  await p.locator('#chips .chip.pri').click(); await p.waitForSelector('.total');
+  await shot('04_quote', true);
+  await p.click('text=ठीक है – आगे बढ़ें'); await shot('05_consent');
+  await p.click('text=मैं सहमत हूँ'); await p.waitForSelector('#appl');
+  await p.selectOption('#appl', 'K12'); await p.click('#sampleBtn'); await p.waitForResponse(r => r.url().includes('/kyc/sample'));
+  await p.waitForTimeout(300); await p.click('text=डॉक्यूमेंट जाँचें'); await p.waitForResponse(r => r.url().includes('/kyc/validate'));
+  await shot('06_kyc_verified', true);
+  await p.click('text=शेड्यूल और भुगतान'); await p.locator('.slot').nth(1).click(); await shot('07_pay');
+  await p.click('#payBtn'); await p.waitForSelector('.tl');
+  await p.click('text=डेमो: अगला अपडेट'); await p.waitForTimeout(400); await p.click('text=डेमो: अगला अपडेट'); await p.waitForTimeout(400);
+  await shot('08_tracker', true);
+  // English session with a problem applicant (K07 altered certificate)
+  const p2 = await ctx.newPage(); await p2.goto('http://localhost:8000/'); await p2.evaluate(() => localStorage.setItem('lang', 'en')); await p2.reload();
+  await p2.click('#startBtn'); await p2.waitForSelector('#chips .chip');
+  const c2 = async (t) => { await p2.locator('#chips .chip', { hasText: t }).first().click(); await p2.waitForResponse(r => r.url().includes('/advisor/message')); await p2.waitForTimeout(250); };
+  await c2('Clinic'); await c2('6-15'); await c2('1');
+  await p2.fill('#txt', 'Delhi'); await p2.press('#txt', 'Enter'); await p2.waitForResponse(r => r.url().includes('/advisor/message')); await p2.waitForTimeout(300);
+  await p2.fill('#txt', '07CPCXN0398P1ZT'); await p2.press('#txt', 'Enter'); await p2.waitForResponse(r => r.url().includes('/advisor/message')); await p2.waitForTimeout(300);
+  await c2('Done'); await c2('₹1,000–3,000');
+  await p2.screenshot({ path: `${OUT}/03b_advisor_reco_en.png` });
+  await p2.locator('#chips .chip.pri').click(); await p2.waitForSelector('.total'); await p2.screenshot({ path: `${OUT}/04b_quote_en.png`, fullPage: true });
+  await p2.click('text=Looks good'); await p2.click('text=I agree'); await p2.waitForSelector('#appl');
+  await p2.selectOption('#appl', 'K07'); await p2.click('#sampleBtn'); await p2.waitForResponse(r => r.url().includes('/kyc/sample')); await p2.waitForTimeout(300);
+  await p2.click('text=Verify documents'); await p2.waitForResponse(r => r.url().includes('/kyc/validate')); await p2.waitForTimeout(300);
+  await p2.screenshot({ path: `${OUT}/06b_kyc_flagged_en.png`, fullPage: true });
+  await p2.click('text=Upload documents').catch(() => {});
+  // back office
+  const p3 = await b.newPage({ viewport: { width: 1360, height: 900 }, deviceScaleFactor: 2 });
+  await p3.goto('http://localhost:8000/backoffice'); await p3.waitForSelector('#rows tr'); await p3.waitForTimeout(500);
+  await p3.screenshot({ path: `${OUT}/09_backoffice.png` });
+  await b.close();
+})();

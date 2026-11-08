@@ -1,0 +1,17 @@
+.venv/
+__pycache__/
+.env
+*.pyc
+.DS_Store
+node_modules/
+.vscode/
+instructions/
+.pytest_cache/
+
+# Binary presentations and documents
+*.pptx
+*.ppt
+*.pdf
+*.docx
+.~lock.*#
+*.tmp
